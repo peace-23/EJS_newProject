@@ -22,6 +22,11 @@ app.set("layout", "./layouts/layout") // not at views root
  *************************/
 app.use(require("./routes/static"))
 
+// Index route
+app.get("/", function(req, routes){
+  resizeBy.render("index", {title: "Home"})
+})
+
 /* ***********************
  * Local Server Information
  * Values from .env (environment) file
