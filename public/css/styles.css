@@ -4,3 +4,307 @@
 *:after {
   box-sizing: border-box;
 }
+
+:root {
+  --font-body: Arial, Helvetica, sans-serif;
+  --font-headline: Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-base);
+  color: var(--dark-grey);
+  /* background-image: url('./site/checkerboard.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh; */
+}
+
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+header a {
+  color: black;
+  text-decoration: none;
+}
+
+.siteName {
+  font-size: xx-large;
+  font-style: var(--font-headline);
+  display: flex;
+  text-align: right;
+  font-weight: bold;
+
+}
+
+#tool {
+  font-size: medium;
+  font-style: var(--font-headline);
+}
+
+/* ul .dmcReviews{
+  list-style-type:none;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  background-color:#98bf21;
+  } */
+
+nav {
+  display: flex;
+  padding: 2% 6%;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.nav-links {
+  flex: 1;
+  text-align: center;
+}
+
+.nav-links ul li {
+  list-style: none;
+  display: inline-block;
+  padding: 8px 12px;
+  position: relative;
+}
+
+.welcomeTitle {
+  font-size: xx-large;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  /* font-weight: bold; */
+  color: black;
+}
+
+p .hero {
+  font-size: xx-large;
+  position: absolute;
+  left: calc(50% - 60px);
+  bottom: -10px;
+  background-color: white;
+}
+
+
+
+
+.callout {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  color: #283618;
+  height: auto;
+  margin-top: 100px;
+
+}
+
+
+
+
+
+/* h1 {
+  display: grid;
+  grid-column: -3/-2;
+  grid-row: 1/2;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  margin:auto;
+  font-size: 50px;
+  color: #ffecd1;
+
+} */
+
+.hero {
+  display: grid;
+  grid-column: 1/-4;
+  grid-row: 1/4;
+  margin: 10px auto;
+  position: relative;
+  height: 300px;
+}
+
+.heroImg {
+  width: 100%;
+  object-fit: cover;
+}
+
+
+.herolabel {
+  position: absolute;
+  top: 2em;
+  left: .5em;
+  background: radial-gradient(#fff);
+  /* border: 1px solid rgba(0, 0, 0, .75); */
+  padding: 0;
+  box-shadow: 0 0 3em #fff;
+  opacity: 0.75;
+  text-align: left;
+
+
+}
+
+
+
+.herolabel p {
+  margin: 0;
+  font-size: 2rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: black;
+
+}
+span #herolb{
+  margin: 0;
+  /* padding: .5em; */
+  font-weight: 20px;
+  font-size: 2rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: black;
+
+}
+
+main {
+  max-width: 960px;
+  display: grid;
+  margin: auto;
+  grid-template-rows: 4em 20em 4em 15em 15em auto;
+  /* grid-template-columns: 20em 20em auto; */ 
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.heroImg {
+  grid-column: 1 / -1;
+  text-align: center;
+  grid-row: 2 / 3; /* Increase the number of rows */
+  height: 30em; /* Set the height to 20em */
+}
+
+.welcomeTitle{
+  grid-column: 1/3;
+  grid-row: 1
+}
+
+.dmcReviews {
+  grid-row: 3/ -2;
+  grid-column: -2 / -5;
+}
+
+.dUpgrades {
+  grid-row: 3 / 4;
+  grid-column: 3 / -5;
+}
+
+.fluxCapacitor {
+  grid-row: 3 / 4;
+  grid-column: 1 / 2;
+}
+
+.flameDecals {
+  grid-row: 3 / 4;
+  grid-column: 2 / 3;
+}
+
+.bumperStickers {
+  grid-row: 4 / 5;
+  grid-column: 1 / 2;
+}
+
+.hubCaps {
+  grid-row: 4 / 5;
+  grid-column: 2 / 3;
+}
+
+
+/* 
+.welcomeTitle{
+  grid-column: 1/3;
+  grid-row: 1
+}
+.heroImg{
+  grid-column: 2/-6;
+  grid-row: 3/-5
+}
+
+
+.dUpgrades{
+  margin: 5px;
+  grid-column: 2/2;
+  grid-row: 2
+
+} */
+/* 
+.fluxCapacitor img{
+  grid-column: 1/2;
+  grid-row: 1/2;
+
+
+
+} */
+
+
+.dmcReviews{
+  /* background-color: whitesmoke; */
+  /* border: 1px dashed red; */
+  margin: 5px;
+  /* display: grid; */
+  grid-column: 3/-6;
+  grid-row: 2/-4;
+}
+
+.flameDecals {
+  grid-column: 5/-5;
+  grid-row: 5/-6;
+}
+
+
+.bumperStickers {
+  grid-column: 5/-5;
+  grid-row: 5/-6;
+}
+
+
+.hubCaps {
+  grid-column: 5/2;
+  grid-row: 5/-5;
+}
+
+
+
+
+
+
+
+
+@media screen and (min-width: 500px) {
+  body {
+    max-width: 1080px;
+    margin: auto;
+    /* }
+  .mission {
+    font-size: 1.2em;
+  }
+  .cart-card {
+    font-size: inherit;
+    grid-template-columns: 150px auto 15%;
+  } */
+  }
+
+  footer {
+    width: 100%;
+    justify-items: left;
+    text-align: left;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  }
+}
