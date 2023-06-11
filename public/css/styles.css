@@ -286,12 +286,11 @@ main {
 
 
 
-@media screen and (min-width: 500px) {
+@media only screen and (min-width: 500px) {
   body {
     max-width: 1080px;
     margin: auto;
     background-image: url("/images/site/checkerboard.jpg");
-    /* background-color: #f4e9cd; */
   }
 
   footer {
@@ -303,6 +302,5 @@ main {
     padding-bottom: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: brown;
-    /* border-bottom: 2px solid #d81159; */
   }
 }
