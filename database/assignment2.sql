@@ -7,7 +7,7 @@ VALUES ('Tony', 'Stark', 'tony@starkent.com', 'Iam1ronM@n');
 
 -- Modifying a single record account type
 UPDATE public.account
-SET account_type = 'admin'
+SET account_type = 'Admin'
 WHERE account_firstname = 'Tony' AND account_lastname = 'Stark';
 
 
