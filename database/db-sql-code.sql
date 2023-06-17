@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS public.inventory
     inv_miles integer NOT NULL,
     inv_color character varying NOT NULL,
     classification_id integer NOT NULL,
-    CONSTRAINT inventory_pkey PRIMARY KEY (inv_id),
+    CONSTRAINT inventory_pkey PRIMARY KEY (inv_id)
     
 );
 
@@ -61,8 +61,7 @@ CREATE TABLE IF NOT EXISTS public.account
     account_lastname character varying NOT NULL,
     account_email character varying NOT NULL,
     account_password character varying NOT NULL,
-    account_type account_type NOT NULL 
-    DEFAULT 'client'::account_type,
+    account_type account_type NOT NULL DEFAULT 'Client'::account_type,
     CONSTRAINT account_pkey PRIMARY KEY (account_id)
 );
 
