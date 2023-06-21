@@ -25,9 +25,9 @@ app.use(require("./routes/static"))
 
 // Index route
 app.get("/", baseController.buildHome)
-// {
-//   res.render("index", {title: "Home"})
-// })
+
+// Inventory routes
+app.use("/inv", inventoryRoute)
 
 /* ***********************
  * Local Server Information
