@@ -68,7 +68,7 @@ nav {
   padding: 0;
   justify-content: center;
   align-items: center;
-  background-color: #3a5a40;
+  background-color: #d0cdcd;
   color: #fff;
   font-size: 15px;
 
@@ -78,14 +78,16 @@ nav {
   flex: 1;
   text-align: center;
   max-width: 960px;
+  
 
 }
 
 .nav-links ul li {
   list-style: none;
   display: inline-block; 
-  padding: 2px 60px;
+  padding: 1px 50px;
   position: relative;
+
 
 }
 
