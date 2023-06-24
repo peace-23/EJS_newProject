@@ -19,6 +19,7 @@ const utilities = require("./utilities/")
 app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout") // not at views root
+app.get('/favicon.ico', (req, res) => res.status(204));   //This is to fix favicon error. Got this from Samantha Sortomme in the Teams class
 
 /* ***********************
  * Routes
@@ -35,6 +36,8 @@ app.use("/inv", inventoryRoute)
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})
 })
+
+
 
 
 /* ***********************
