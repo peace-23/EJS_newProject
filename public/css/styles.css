@@ -10,7 +10,7 @@
 
 :root {
   --font-body: Arial, Helvetica, sans-serif;
-  --font-headline:'Poppins', sans-serif;
+  --font-headline: 'Poppins', sans-serif;
 }
 
 body {
@@ -29,6 +29,7 @@ body {
   padding: 15px;
   max-width: 960px;
   margin: 1em;
+
 }
 
 
@@ -77,22 +78,22 @@ nav {
 .nav-links {
   flex: 1;
   text-align: center;
-  max-width: 960px;
-  
-
+  /* max-width: 960px; */
+  width: 100%;
 }
 
 .nav-links ul li {
   list-style: none;
-  display: inline-block; 
-  padding: 1px 50px;
+  display: inline-block;
+  padding: 1px 40px;
   position: relative;
-
-
 }
 
+.nav-links ul {
+  padding-left: 2px;
+}
 
-main {
+#mainWrapper {
   max-width: 960px;
   display: grid;
   grid-template-rows: 4em 20em 4em 10em 10em auto;
@@ -268,11 +269,89 @@ main {
 
 
 /* Vehicle Classification inventory view */
-ul #inv-display li{
+/* #inv-display {
   display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-align-items: center;
-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  align-items: center;
+  gap: 20px;
+} */
+
+
+#inv-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 20px;
+  /* grid-row: 1fr ; */
+  padding: 5px;
+  margin: 5px;
+
+}
+
+
+
+#inv-display li {
+  /* display: flex; */
+  /* align-items: flex-start; */
+  /* margin-bottom: 20px; */
+  border: 1px solid #9b2226;
+  border-radius: 10px;
+  list-style: none;
+
+}
+
+
+
+#inv-display li a {
+  margin-right: 20px;
+  
+}
+
+#inv-display li img {
+
+  margin: 20px;
+}
+
+
+
+
+.namePrice {
+  flex: 1;
+  
+}
+
+.namePrice h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+
+  
+}
+
+.description {
+  margin-bottom: 10px;
+
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+
+  
+}
+
+.price, .mileage, .color {
+  flex-basis: 50%;
+}
+
+.notice {
+  font-size: 18px;
+  text-align: center;
+}
+
+.vehicleContainer {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
 }
 
 /* Individual vehicle inventory view */
@@ -345,9 +424,9 @@ gap: 20px;
 
 
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 700px) {
   body {
-    max-width: 1080px;
+    max-width: 960px;
     margin: auto;
     background-image: url("/images/site/checkerboard.jpg");
   }
@@ -362,5 +441,87 @@ gap: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: brown;
   }
+
+  main {
+    width: 100%;
+  }
+
+}
+
+
+@media only screen and (max-width: 800px) {
+  body {
+    /* max-width: 1080px; */
+    margin: auto;
+    background-image: url("/images/site/checkerboard.jpg");
+  }
+
+  footer {
+    width: 100%;
+    justify-items: left;
+    text-align: left;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: brown;
+  }
+
+  main {
+    width: 100%;
+  }
+
+  .welcomeTitle {
+    font-size: x-large;
+
+  }
+
+  .nav-links ul li {
+    display: inline-block;
+    padding: 5px 6px;
+    padding-left: 2px;
+  }
+
+
+  #top-header {
+    flex-direction: column;
+    margin-top: 5px;
+  }
+
+  .siteName {
+    padding-bottom: 10px;
+  }
+
+  .heroImg {
+    width: 320px;
+    height: 150px;
+    object-fit: cover;
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+
+  .herolabel {
+    width: 150px;
+  }
+
+  .hero-heading {
+    font-size: 21px;
+
+  }
+
+  .hero-desc {
+    font-size: medium;
+    line-height: 25px;
+  }
+
+  #ownToday {
+    width: 150px;
+    height: 50px;
+  }
+
+  .dmcReviews {
+    flex-direction: row;
+  }
+
 
 }
