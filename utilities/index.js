@@ -77,13 +77,13 @@ Util.buildInventoryGrid = async function (data) {
       grid += '<div class="namePrice">';
 
       grid += '<h2>' + vehicle.inv_make + ' ' + vehicle.inv_model + ' ' + 'Details </h2>';
-      grid += '<hr />';
+      grid += '<hr /><br>';
       grid += '<span class="price">Price: $' + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span><br>';
-      grid += '<p class="description">' + vehicle.inv_description + '</p>';
+      grid += '<p class="description"> <span>Description: </span>' + vehicle.inv_description + '</p><br>';
 
       grid += '<div class="details">';
-      grid += '<span class="mileage">Mileage: ' + new Intl.NumberFormat('en-US').format(vehicle.inv_miles) + ' miles</span><br>';
-      grid += '<span class="color">Color: ' + vehicle.inv_color + '</span>';
+      grid += '<span class="mileage">Mileage: </span>' + new Intl.NumberFormat('en-US').format(vehicle.inv_miles) + ' miles<br>';
+      grid += '<br><span class="color">Color: </span>' + vehicle.inv_color ;
       grid += '</div>';
 
 

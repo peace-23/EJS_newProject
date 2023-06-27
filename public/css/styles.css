@@ -80,6 +80,15 @@ nav {
   text-align: center;
   /* max-width: 960px; */
   width: 100%;
+
+
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #0b0e01;
+
+
 }
 
 .nav-links ul li {
@@ -87,18 +96,21 @@ nav {
   display: inline-block;
   padding: 1px 40px;
   position: relative;
+
 }
 
 .nav-links ul {
   padding-left: 2px;
+
 }
 
 #mainWrapper {
-  max-width: 960px;
+  /* max-width: 960px; */
   display: grid;
   grid-template-rows: 4em 20em 4em 10em 10em auto;
-  grid-template-columns: 240px 240px 440.01px;
+  /* grid-template-columns: 240px 240px 440.01px; */
   grid-gap: 20px;
+
 }
 
 
@@ -279,9 +291,10 @@ nav {
 
 #inv-display {
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  gap: 20px;
-  /* grid-row: 1fr ; */
+  grid-template-columns: 1fr 1fr;
+  /* gap: 20px; */
+  align-items: center;
+  gap: 0.5em;
   padding: 5px;
   margin: 5px;
 
@@ -290,25 +303,32 @@ nav {
 
 
 #inv-display li {
-  /* display: flex; */
-  /* align-items: flex-start; */
-  /* margin-bottom: 20px; */
-  border: 1px solid #9b2226;
+  border: 1px solid rgba(84, 102, 42, 0.87);
   border-radius: 10px;
   list-style: none;
+  width: 220px;
+  height: 240px;
+}
 
+
+main h1 {
+  width: 100%;
 }
 
 
 
 #inv-display li a {
-  margin-right: 20px;
-  
+  margin: auto;
+  font-size: large;
+  color: #468189;
+  text-decoration: none;
+
+
 }
 
 #inv-display li img {
-
-  margin: 20px;
+  margin: 10px;
+  border-radius: 5px;
 }
 
 
@@ -316,32 +336,36 @@ nav {
 
 .namePrice {
   flex: 1;
-  
+  flex-direction: column;
+  padding: 0.5rem;
+  /* background-color: #ede0d4; */
+
 }
 
 .namePrice h2 {
-  margin: 0;
+  margin: auto;
   font-size: 24px;
+  text-align: left;
+
+
+}
+
+.namePrice h2 span {
+  text-align: center;
+}
+
+.namePrice span {
   font-weight: bold;
 
-  
+  /* text-align: center; */
 }
 
 .description {
   margin-bottom: 10px;
-
+  font-size: large;
+  text-align: left;
 }
 
-.details {
-  display: flex;
-  flex-wrap: wrap;
-
-  
-}
-
-.price, .mileage, .color {
-  flex-basis: 50%;
-}
 
 .notice {
   font-size: 18px;
@@ -354,80 +378,26 @@ nav {
   margin-bottom: 20px;
 }
 
+
+.vehicleContainer {
+  width: 200px;
+}
+
+
+.vehicleContainer img {
+  width: 400px;
+  margin: 0 auto;
+}
+
+
+
 /* Individual vehicle inventory view */
-
-
-/* 
-#inv-display {
-  display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  grid-row: 1fr ;
-  padding: 0;
-  margin: 0;
-}
-
-#inv-display li {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 20px;
-}
-
-
-
-#inv-display li a {
-  margin-right: 20px;
-}
-
-#inv-display li img {
-  width: 300px;
-  height: auto;
-  margin-right: 20px;
-}
-
-
-
-
-.namePrice {
-  flex: 1;
-  
-}
-
-.namePrice h2 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: bold;
-
-  
-}
-
-.description {
-  margin-bottom: 10px;
-
-}
-
-.details {
-  display: flex;
-  flex-wrap: wrap;
-
-  
-}
-
-.price, .mileage, .color {
-  flex-basis: 50%;
-}
-
-.notice {
-  font-size: 18px;
-  text-align: center;
-}
- */
-
 
 
 @media only screen and (min-width: 700px) {
   body {
     max-width: 960px;
-    margin: auto;
+    margin: 0 auto;
     background-image: url("/images/site/checkerboard.jpg");
   }
 
@@ -442,17 +412,17 @@ nav {
     color: brown;
   }
 
-  main {
+  /* main {
     width: 100%;
-  }
+    grid-row: auto;
+  } */
 
 }
 
 
 @media only screen and (max-width: 800px) {
   body {
-    /* max-width: 1080px; */
-    margin: auto;
+    height: 3000px;
     background-image: url("/images/site/checkerboard.jpg");
   }
 
@@ -521,6 +491,26 @@ nav {
 
   .dmcReviews {
     flex-direction: row;
+  }
+
+
+  #inv-display {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 1px;
+    margin: 1px;
+    flex-direction: column;
+
+  }
+
+
+
+  .vehicleContainer {
+    width: 200px;
+  }
+
+  .vehicleContainer img {
+    width: 300px;
   }
 
 
