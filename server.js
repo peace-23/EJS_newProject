@@ -29,7 +29,7 @@ app.use(require("./routes/static"))
 
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
-// app.get("/err", utilities.handleErrors(baseController.errorTest));
+app.get("/error", utilities.handleErrors(baseController.error));
 
 // Inventory routes
 app.use("/inv", inventoryRoute)
@@ -45,11 +45,12 @@ app.use(async (req, res, next) => {
 *************************/
 app.use(async (err, req, res, next) => {
   let nav = await utilities.getNav()
+  let message = ""
   console.error(`Error at: "${req.originalUrl}": ${err.message}`)
   if(err.status == 404){ message = err.message} else {message = 'Oh no! There was a crash. Maybe try a different route?'}
   res.render("errors/error", {
     title: err.status || 'Server Error',
-    message,
+    message: message,
     nav
   })
 })
