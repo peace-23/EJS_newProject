@@ -83,7 +83,7 @@ Util.buildInventoryGrid = async function (data) {
 
       grid += '<div class="details">';
       grid += '<span class="mileage">Mileage: </span>' + new Intl.NumberFormat('en-US').format(vehicle.inv_miles) + ' miles<br>';
-      grid += '<br><span class="color">Color: </span>' + vehicle.inv_color ;
+      grid += '<br><span class="color">Color: </span>' + vehicle.inv_color;
       grid += '</div>';
 
 
