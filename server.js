@@ -29,6 +29,7 @@ app.use(require("./routes/static"))
 
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
+// app.get("/err", utilities.handleErrors(baseController.errorTest));
 
 // Inventory routes
 app.use("/inv", inventoryRoute)
