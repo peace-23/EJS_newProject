@@ -1,0 +1,29 @@
+<h1 class="registrationTitle">Register</h1>
+
+<%- messages() %>
+
+    <div>
+        <form>
+            <p>ALL FIELDS ARE REQUIRED.</p><br>
+            <fieldset>
+                <label for="fname">First name:</label><br>
+                <input type="text" id="fname" name="fname" value="firstname" required><br><br>
+                <label for="lname">Last name:</label><br>
+                <input type="text" id="lname" name="lname" value="lastname" required><br><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" value="email" required><br><br>
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" required> <span id="showpswd">Show
+                    Password</span><br><br>
+
+                <p>Password must be:<br>
+                    * 12 characters in length, minimum<br>
+                    * contain at least 1 capital letter<br>
+                    * contain at least 1 number<br>
+                    * contain at least 1 special character</p>
+                <button type="submit">Register</button><br><br>
+            </fieldset>
+        </form>
+        <p>Have an account? <a href="/account/login" id="loginLink">Login</a></p>
+    </div>
+    <script src="/js/script.js"></script>
