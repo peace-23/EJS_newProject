@@ -365,6 +365,96 @@ main h1 {
 }
 
 
+/* login view */
+
+
+
+
+/* Registration view */
+/* form *{
+  display: block;
+} */
+
+.registerContainer {
+  margin: 0 auto;
+}
+
+#showpswd {
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 1em;
+  font-size: small;
+  width: 8em;
+  text-align: center;
+}
+
+#regBtn {
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 1em;
+  font-size: small;
+  width: 8em;
+  text-align: center;
+  background-color: #001233;
+  color: #ffff;
+}
+
+.registerBox {
+  width: 20em;
+  border-radius: 5px;
+  background-color: whitesmoke;
+
+}
+
+#requireWarning {
+  font-size: small;
+  margin-bottom: 0px;
+  color: #a4133c;
+
+}
+
+
+
+#fname,
+#lname,
+#email,
+#pword {
+  font-size: small;
+}
+
+#fname,
+#lname,
+#email,
+#pword,
+input {
+  height: 30px;
+  width: 20em;
+}
+
+input:required:invalid, input:focus:invalid {
+  /* background-position: right top;
+  background-repeat: no-repeat; */
+  background-color: #fff0f3;
+ }
+  input:required:valid {
+  /* background-position: right top;
+  background-repeat: no-repeat; */
+  background-color: #d8f3dc;
+  }
+
+
+
+#pwdRequirement {
+  font-size: small;
+  color: #a4133c;
+}
+
+#loginPage {
+  text-align: center;
+}
+
 @media only screen and (min-width: 700px) {
   body {
     max-width: 960px;
@@ -372,7 +462,7 @@ main h1 {
     background-image: url("/images/site/checkerboard.jpg");
   }
 
-  
+
 
   footer {
     width: 100%;
@@ -532,7 +622,7 @@ main h1 {
   .description {
     font-size: medium;
     width: 300px;
-   }
+  }
 
   .vehicleContainer img {
     width: 300px;
