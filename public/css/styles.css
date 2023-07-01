@@ -367,13 +367,55 @@ main h1 {
 
 /* login view */
 
+.loginContainer {
+  margin: 0 auto;
+  align-self: center;
+}
 
 
+#loginForm{
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#loginBtn {
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 1em;
+  font-size: small;
+  width: 8em;
+  text-align: center;
+  background-color: #0466c8;
+  color: #ffff;
+}
+
+.loginBox {
+  width: 20em;
+  border-radius: 5px;
+  background-color: #f4d35e;
+
+}
+
+#loginForm {
+  width: 21em;
+  border-radius: 5px;
+  background-color: whitesmoke;
+
+}
+
+#registerPage{
+  text-align: center;
+  font-size: medium;
+}
+
+.loginBox #showpswd {
+  background-color: #000;
+  color: #ffff;
+}
 
 /* Registration view */
-/* form *{
-  display: block;
-} */
 
 .registerContainer {
   margin: 0 auto;
@@ -482,7 +524,7 @@ input:required:invalid, input:focus:invalid {
 @media only screen and (max-width: 800px) {
   body {
     height: 3000px;
-    background-image: url("/images/site/checkerboard.jpg");
+    background-image: url("/images/site/small_check.jpg");
   }
 
   #wrapper {
@@ -628,5 +670,6 @@ input:required:invalid, input:focus:invalid {
     width: 300px;
     margin: 0 auto;
   }
+
 
 }
