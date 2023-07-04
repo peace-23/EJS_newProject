@@ -1,0 +1,36 @@
+<!-- Add New Classification View Title -->
+<h1 class="addClassTitle">Add Classification</h1>
+
+<!-- Add New Classification View Message -->
+<%- messages() %>
+
+
+    <!-- Add New Classification View Error Display -->
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error=> { %>
+                <li>
+                    <%= error.msg %>
+                </li>
+                <% }) %>
+        </ul>
+        <% } %>
+
+
+            <!-- Add New Classification View Display -->
+            <div class="addClassContainer">
+                <form action="/inv/add-Classification" method="post">
+                    <fieldset class="registerBox">
+                        <p id="addClassWarning">ALL FIELDS ARE REQUIRED.<br> NAME MUST BE ALPHABETIC CHARACTERS ONLY.
+                        </p>
+                        <hr />
+                        <label for="classification_name">Classification Name:</label><br>
+                        <input type="text" id="classification_name" name="classification_name" required
+                            value="<%= locals.classification_name %>" placeholder="Enter firstname"><br><br>
+                        <button type="submit" id="addClassBtn">Add Classification</button><br><br>
+                    </fieldset>
+
+                </form>
+
+            </div>
+            <script src="/js/script.js"></script>

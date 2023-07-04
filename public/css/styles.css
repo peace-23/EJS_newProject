@@ -536,8 +536,8 @@ input:required:invalid, input:focus:invalid {
 
 
   footer {
-    margin-top: 820px;
-    text-align: center;
+    /* margin-top: 820px; */
+    /* text-align: center; */
     padding-top: 20px;
     padding-bottom: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
