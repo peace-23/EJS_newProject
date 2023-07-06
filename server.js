@@ -11,7 +11,6 @@ const env = require("dotenv").config()
 const app = express()
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
-// const managementRoute = require("./routes/managementRoute")
 const accountRoute = require("./routes/accountRoute")
 const utilities = require("./utilities/")
 const session = require("express-session")
@@ -70,9 +69,22 @@ app.use("/inv", inventoryRoute)
 // Account routes
 app.use("/account", require("./routes/accountRoute"))
 
-// Vehicle Management routes
-// app.use("/management", require("./routes/managementRoute"))
-// app.use("/inv", managementRoute)
+
+// // Define a route to fetch the options from the database
+// app.get('/navigation', (req, res) => {
+//   const query = 'SELECT id, name FROM options'; // Replace 'options' with your table name
+
+//   // Execute the query
+//   connection.query(query, (error, results) => {
+//     if (error) {
+//       console.error('Error fetching options from the database: ' + error.stack);
+//       res.status(500).send('Internal Server Error');
+//       return;
+//     }
+
+//     res.json(results);
+//   });
+// });
 
 
 // File Not Found Route - must be last route in list

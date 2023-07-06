@@ -43,15 +43,6 @@ validate.checkClassificationData = async (req, res, next) => {
 
 
 
-// inv_make,
-//     inv_model,
-//     inv_year,
-//     inv_description,
-//     inv_image,
-//     inv_thumbnail,
-//     inv_price,
-//     inv_miles,
-//     inv_color
 
 
 /*  **********************************
@@ -62,13 +53,13 @@ validate.newVehicleRules = () => {
         // vehicle make is required and must be string
         body("inv_make")
             .trim()
-            .isLength({ min: 1 })
+            .isLength({ min: 3 })
             .withMessage("Please provide make of vehicle."), // on error this message is sent.
 
         // Model of vehicle is required and must be string
         body("inv_model")
             .trim()
-            .isLength({ min: 2 })
+            .isLength({ min: 3 })
             .withMessage("Please provide model of vehicle."), // on error this message is sent.
 
         // Year of vehicle is required and must be integer

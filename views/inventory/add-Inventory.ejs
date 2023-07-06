@@ -6,63 +6,73 @@
 <%- messages() %>
 
 
-<!-- Add Vehicle  View Error Display -->
-<% if (errors) { %>
-    <ul class="notice">
-   <% errors.array().forEach(error => { %>
-     <li><%= error.msg %></li>
-  <%  }) %>
-   </ul>
-  <% } %>
+    <!-- Add Vehicle  View Error Display -->
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error=> { %>
+                <li>
+                    <%= error.msg %>
+                </li>
+                <% }) %>
+        </ul>
+        <% } %>
 
 
-  <!-- Registration View Display -->
-    <div class="addInvContainer">
-        <form action="/inventory/add-Inventory" method="post">
-            <fieldset class="addInvBox">
-                <p id="addInvWarning">ALL FIELDS ARE REQUIRED.</p>
-                <hr />
-                <label for="classification_name">Classification</label><br>
-                <input type="text" id="fname" name="account_firstname" required value="<%= locals.account_firstname %>" placeholder="Enter firstname"><br><br>
-                <label for="country">Country</label>
-                <select id="country" name="country">
-                  <option value="australia">Australia</option>
-                  <option value="canada">Canada</option>
-                  <option value="usa">USA</option>
-                </select>
-              
+            <!-- Registration View Display -->
+            <div class="addInvContainer">
+                <form action="/inventory/add-Inventory" method="post">
+                    <fieldset class="addInvBox">
+                        <p id="addInvWarning">ALL FIELDS ARE REQUIRED.</p>
+                        <hr />
+                        <label for="myDropdown">Select a Classification:</label>
+                        <select id="myDropdown" name="Classification">
+                            <!-- Options will be populated dynamically -->
+                            <option value="Home">Home</option>
+                            <option value="Custom">Custom</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="Sport">Sport</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Truck">Truck</option>
+                        </select><br><br>
+
+                        <label for="invMake">Make:</label><br>
+                        <input type="text" id="invMake" name="inv_make" required value="<%= locals.inv_make %>"
+                            placeholder="3 Character minimum"><br><br>
 
 
+                        <label for="invModel">Model:</label><br>
+                        <input type="text" id="invModel" name="inv_model" required value="<%= locals.inv_model %>"
+                            placeholder="3 Character minimum"><br><br>
+
+                        <label for="invDescription">Description:</label><br>
+                        <textarea id="invDescription" rows="4" cols="50" name="inv_description" required
+                            value="<%= locals.inv_description %>"></textarea><br><br>
+
+                        <label for="imagePathInput">Image Path:</label><br>
+                        <input type="text" id="imagePathInput" name=inv_image required
+                            value="<%= locals.inv_image %>"><br><br>
+
+                        <label for="thumbnailPathInput">Thumbnail Path:</label><br>
+                        <input type="text" id="thumbnailPathInput" name="inv_thumbnail" required
+                            value="<%= locals.inv_thumbnail %>" /><br><br>
 
 
+                        <label for="yearInput">Year:</label><br>
+                        <input type="number" id="yearInput" name=inv_year min="1900" max="2099" required
+                            value="<%= locals.inv_year %>" /><br><br>
 
-                <label for="fname">First name:</label><br>
-                <input type="text" id="fname" name="account_firstname" required value="<%= locals.account_firstname %>" placeholder="Enter firstname"><br><br>
-                <label for="lname">Last name:</label><br>
-                <input type="text" id="lname" name="account_lastname" required value="<%= locals.account_lastname %>" placeholder="Enter lastname"><br><br>
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="account_email" required
-                    pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
-                    value="<%= locals.account_email %>" placeholder="Enter a valid email address"><br><br>
-                <label for="accountPassword">Password:</label><br>
-                <input type="password" id="pword" name="account_password" required
-                    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
-                    title="Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character"
-                    placeholder="Enter password"> <br><br><span id="showpswd">Show
-                    Password</span><br><br>
+                        <label for="milesInput">Miles:</label><br>
+                        <input type="number" id="milesInput" name=inv_miles min="0" required
+                            value="<%= locals.inv_miles %>" /><br><br>
 
-                <p id="pwdRequirement">Password must be:<br>
-                    * 12 characters in length, minimum<br>
-                    * contain at least 1 capital letter<br>
-                    * contain at least 1 number<br>
-                    * contain at least 1 special character
-                </p>
-                <button type="submit" id="regBtn">Register</button><br><br>
-                <hr />
-                <p id="loginPage">Have an account? <a href="/account/login" id="loginLink">Login</a></p>
-            </fieldset>
+                        <label for="colorInput">Color:</label><br>
+                        <input type="text" id="colorInput" name=inv_color required
+                            value="<%= locals.inv_color%>" /><br><br>
 
-        </form>
+                        <button type="submit" id="addNewVehicleBtn">Add Vehicle</button><br><br>
+                    </fieldset>
 
-    </div>
-    <script src="/js/script.js"></script>
+                </form>
+
+            </div>
+            <script src="/js/script.js"></script>

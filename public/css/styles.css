@@ -497,6 +497,58 @@ input:required:invalid, input:focus:invalid {
   text-align: center;
 }
 
+/* Add Vehicle View */
+.addInvContainer{
+  margin: 0 auto;
+}
+.addInvBox{
+  width: 20em;
+  border-radius: 5px;
+  background-color: #f4d58d;
+
+}
+#addInvWarning{
+  font-size: small;
+  margin-bottom: 0px;
+  color: #a4133c;
+}
+#myDropdown{
+  height: 30px;
+  width: 6em;
+  text-align: center;
+
+}
+
+#invDescription{
+  width: 20em;
+  height: 100px;
+}
+
+
+#addNewVehicleBtn{
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 1em;
+  font-size: small;
+  width: 8em;
+  text-align: center;
+  background-color: #001233;
+  color: #ffff;
+}
+
+/* Management View */
+.mgtContainer{
+  margin-left: 60px;
+}
+
+/* Error Message View */
+.mgtContainer{
+  margin-left: 60px;
+
+}
+
+
 @media only screen and (min-width: 700px) {
   body {
     max-width: 960px;
