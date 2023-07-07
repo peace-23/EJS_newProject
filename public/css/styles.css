@@ -343,8 +343,15 @@ main h1 {
 
 
 .notice {
-  font-size: 18px;
-  text-align: center;
+  font-size: 15px;
+  text-align: left;
+  color: red;
+}
+
+#mainWrapper .notice{
+  display: grid;
+  grid-row: 25px;
+  height: 10px;
 }
 
 .vehicleContainer {
@@ -536,6 +543,37 @@ input:required:invalid, input:focus:invalid {
   background-color: #001233;
   color: #ffff;
 }
+
+
+/* Add Classification View */
+.addClassContainer{
+  margin: 0 auto;
+}
+.addClassBox{
+  width: 20em;
+  border-radius: 5px;
+  background-color: #eddea4;
+}
+#addClassWarning{
+  font-size: small;
+  margin-bottom: 0px;
+  color: #a4133c;
+  width: 25em;
+}
+
+
+#addClassBtn{
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 1em;
+  font-size: small;
+  width: 10em;
+  text-align: center;
+  background-color: #001233;
+  color: #ffff;
+}
+
 
 /* Management View */
 .mgtContainer{
