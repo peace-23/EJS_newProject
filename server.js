@@ -11,7 +11,38 @@ const env = require("dotenv").config()
 const app = express()
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
+const accountRoute = require("./routes/accountRoute")
 const utilities = require("./utilities/")
+const session = require("express-session")
+const pool = require('./database/')
+const bodyParser = require("body-parser")
+
+
+/* ***********************
+ * Middleware
+ * ************************/
+app.use(session({
+  store: new (require('connect-pg-simple')(session))({
+    createTableIfMissing: true,
+    pool,
+  }),
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true,
+  name: 'sessionId',
+}))
+
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+
+
+// Express Messages Middleware
+app.use(require('connect-flash')())
+app.use(function(req, res, next){
+  res.locals.messages = require('express-messages')(req, res)
+  next()
+})
 
 
 /* ***********************
@@ -31,8 +62,30 @@ app.use(require("./routes/static"))
 app.get("/", utilities.handleErrors(baseController.buildHome))
 app.get("/error", utilities.handleErrors(baseController.error));
 
+
 // Inventory routes
 app.use("/inv", inventoryRoute)
+
+// Account routes
+app.use("/account", require("./routes/accountRoute"))
+
+
+// // Define a route to fetch the options from the database
+// app.get('/navigation', (req, res) => {
+//   const query = 'SELECT id, name FROM options'; // Replace 'options' with your table name
+
+//   // Execute the query
+//   connection.query(query, (error, results) => {
+//     if (error) {
+//       console.error('Error fetching options from the database: ' + error.stack);
+//       res.status(500).send('Internal Server Error');
+//       return;
+//     }
+
+//     res.json(results);
+//   });
+// });
+
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {

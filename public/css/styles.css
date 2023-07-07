@@ -365,6 +365,190 @@ main h1 {
 }
 
 
+/* login view */
+
+.loginContainer {
+  margin: 0 auto;
+  align-self: center;
+}
+
+
+#loginForm{
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#loginBtn {
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 1em;
+  font-size: small;
+  width: 8em;
+  text-align: center;
+  background-color: #0466c8;
+  color: #ffff;
+}
+
+.loginBox {
+  width: 20em;
+  border-radius: 5px;
+  background-color: #f4d35e;
+
+}
+
+#loginForm {
+  width: 21em;
+  border-radius: 5px;
+  background-color: whitesmoke;
+
+}
+
+#registerPage{
+  text-align: center;
+  font-size: medium;
+}
+
+.loginBox #showpswd {
+  background-color: #000;
+  color: #ffff;
+}
+
+/* Registration view */
+
+.registerContainer {
+  margin: 0 auto;
+}
+
+#showpswd {
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 1em;
+  font-size: small;
+  width: 8em;
+  text-align: center;
+}
+
+#regBtn {
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 1em;
+  font-size: small;
+  width: 8em;
+  text-align: center;
+  background-color: #001233;
+  color: #ffff;
+}
+
+.registerBox {
+  width: 20em;
+  border-radius: 5px;
+  background-color: whitesmoke;
+
+}
+
+#requireWarning {
+  font-size: small;
+  margin-bottom: 0px;
+  color: #a4133c;
+
+}
+
+
+
+#fname,
+#lname,
+#email,
+#pword {
+  font-size: small;
+}
+
+#fname,
+#lname,
+#email,
+#pword,
+input {
+  height: 30px;
+  width: 20em;
+}
+
+input:required:invalid, input:focus:invalid {
+  /* background-position: right top;
+  background-repeat: no-repeat; */
+  background-color: #fff0f3;
+ }
+  input:required:valid {
+  /* background-position: right top;
+  background-repeat: no-repeat; */
+  background-color: #d8f3dc;
+  }
+
+
+
+#pwdRequirement {
+  font-size: small;
+  color: #a4133c;
+}
+
+#loginPage {
+  text-align: center;
+}
+
+/* Add Vehicle View */
+.addInvContainer{
+  margin: 0 auto;
+}
+.addInvBox{
+  width: 20em;
+  border-radius: 5px;
+  background-color: #f4d58d;
+
+}
+#addInvWarning{
+  font-size: small;
+  margin-bottom: 0px;
+  color: #a4133c;
+}
+#myDropdown{
+  height: 30px;
+  width: 6em;
+  text-align: center;
+
+}
+
+#invDescription{
+  width: 20em;
+  height: 100px;
+}
+
+
+#addNewVehicleBtn{
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 1em;
+  font-size: small;
+  width: 8em;
+  text-align: center;
+  background-color: #001233;
+  color: #ffff;
+}
+
+/* Management View */
+.mgtContainer{
+  margin-left: 60px;
+}
+
+/* Error Message View */
+.mgtContainer{
+  margin-left: 60px;
+
+}
+
+
 @media only screen and (min-width: 700px) {
   body {
     max-width: 960px;
@@ -372,7 +556,7 @@ main h1 {
     background-image: url("/images/site/checkerboard.jpg");
   }
 
-  
+
 
   footer {
     width: 100%;
@@ -392,7 +576,7 @@ main h1 {
 @media only screen and (max-width: 800px) {
   body {
     height: 3000px;
-    background-image: url("/images/site/checkerboard.jpg");
+    background-image: url("/images/site/small_check.jpg");
   }
 
   #wrapper {
@@ -404,8 +588,8 @@ main h1 {
 
 
   footer {
-    margin-top: 820px;
-    text-align: center;
+    /* margin-top: 820px; */
+    /* text-align: center; */
     padding-top: 20px;
     padding-bottom: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -532,11 +716,12 @@ main h1 {
   .description {
     font-size: medium;
     width: 300px;
-   }
+  }
 
   .vehicleContainer img {
     width: 300px;
     margin: 0 auto;
   }
+
 
 }
