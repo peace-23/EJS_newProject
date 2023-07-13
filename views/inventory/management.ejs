@@ -12,12 +12,22 @@
             <%#- grid %>
 
                 <!-- Vehicle Management View Display -->
-                <div class="mgtContainer">
-                    <!-- <form action="/inventory/management" method="post"> -->
-                    <h2> <a href="/inv/add-Classification" id="addClassification">Add New
-                            Classification</a> </h2>
-                    <h2> <a href="/inv/add-Inventory" id="addVehicle">Add New Vehicle</a> </h2>
+                <ul class="mgtContainer">
+                    <form action="/inventory/management" method="post">
+                    <li> <a href="/inv/add-Classification" id="addClassification">Add New
+                            Classification</a> </li>
+                    <li> <a href="/inv/add-Inventory" id="addVehicle">Add New Vehicle</a> </li>
                     <!-- </form> -->
 
-                </div>
-                <!-- <script src="/js/script.js"></script> -->
+                </ul>
+
+                <h2>Manage Inventory</h2>
+                <p>Select a classification from the list to see the inventory items.</p>
+
+                <%- ClassificationSelect %>
+
+                    <table id="inventoryDisplay"></table>
+
+                    <noscript>JavaScript must be enabled to use this page.</noscript>
+
+                    <script src="/js/inventory.js"></script>

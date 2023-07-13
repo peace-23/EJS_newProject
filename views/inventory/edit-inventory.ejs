@@ -1,5 +1,5 @@
 <!-- Add Vehicle View Title -->
-<h1 class="addVehicleTitle">Add Vehicle</h1>
+<h1 class="editTitle">Add Vehicle</h1>
 
 
 <!-- Add Vehicle  View Message -->
@@ -19,22 +19,17 @@
 
 
             <!-- Registration View Display -->
-            <div class="addInvContainer">
-                <form action="/inventory/add-Inventory" method="post">
-                    <fieldset class="addInvBox">
-                        <p id="addInvWarning">ALL FIELDS ARE REQUIRED.</p>
+            <div class="editContainer">
+                <form id="updateForm" action="/inv/edit-inventory" method="post">
+                    <fieldset class="editBox">
+                        <p id="editvWarning">ALL FIELDS ARE REQUIRED.</p>
                         <hr />
                         <label for="myDropdown">Select a Classification:</label>
-                        <select id="myDropdown" name="Classification">
-                            <!-- Options will be populated dynamically -->
-                            <option value="Home">Home</option>
-                            <option value="Custom">Custom</option>
-                            <option value="Sedan">Sedan</option>
-                            <option value="Sport">Sport</option>
-                            <option value="SUV">SUV</option>
-                            <option value="Truck">Truck</option>
-                            <%#- ClassificationSelect %>
-                        </select><br><br>
+                        <!-- <select id="myDropdown" name="Classification"> -->
+                            <%- ClassificationSelect %>
+
+                            <table id="inventoryDisplay"></table>
+                            <br><br>
 
                         <label for="invMake">Make:</label><br>
                         <input type="text" id="invMake" name="inv_make" required value="<%= locals.inv_make %>"
@@ -70,10 +65,16 @@
                         <input type="text" id="colorInput" name=inv_color required
                             value="<%= locals.inv_color%>" /><br><br>
 
-                        <button type="submit" id="addNewVehicleBtn">Add Vehicle</button><br><br>
+                        <button type="submit" attribute="disabled" id="editBtn">Update Vehicle</button><br><br>
+                        <input type="hidden" name="inv_id"
+                        <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+                        <% } %>>
+
                     </fieldset>
 
                 </form>
 
             </div>
             <script src="/js/script.js"></script>
+            <script src="/js/inv-update.js"></script>
+            <script src="/js/inventory.js"></script>

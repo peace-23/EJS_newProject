@@ -18,27 +18,27 @@ showpswd.addEventListener("click", function () {
 
 
 
-// ******************************************************************
-// This function is for the dropdown list of all the classifications
-// ******************************************************************
-// inv_make,  var dropdown = document.getElementById("myDropdown");
+// // ******************************************************************
+// // This function is for the dropdown list of all the classifications
+// // ******************************************************************
+// // inv_make,  var dropdown = document.getElementById("myDropdown");
 
-// Fetch options from the server and populate the dropdown
-fetch('../navigation')
-  .then(response => response.json())
-  .then(data => {
-    data.forEach(option => {
-      var optionElement = document.createElement('option');
-      optionElement.value = option.id;
-      optionElement.textContent = option.name;
-      dropdown.appendChild(optionElement);
-    });
-  })
-  .catch(error => {
-    console.error('Error fetching options: ' + error);
-  });
+// // Fetch options from the server and populate the dropdown
+// fetch('../navigation')
+//   .then(response => response.json())
+//   .then(data => {
+//     data.forEach(option => {
+//       var optionElement = document.createElement('option');
+//       optionElement.value = option.id;
+//       optionElement.textContent = option.name;
+//       dropdown.appendChild(optionElement);
+//     });
+//   })
+//   .catch(error => {
+//     console.error('Error fetching options: ' + error);
+//   });
 
-dropdown.addEventListener("change", function () {
-  var selectedOption = dropdown.value;
-  console.log("Selected option: " + selectedOption);
-});
+// dropdown.addEventListener("change", function () {
+//   var selectedOption = dropdown.value;
+//   console.log("Selected option: " + selectedOption);
+// });

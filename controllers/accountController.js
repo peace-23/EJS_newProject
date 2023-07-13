@@ -33,11 +33,12 @@ async function buildRegister(req, res, next) {
 
 /* ****************************************
 *  Deliver Account Management view
+this 
 * *************************************** */
 async function buildManagement(req, res, next) {
     let nav = await utilities.getNav()
     // req.flash("notice", "This is a flash message.")
-    res.render("account/management", {
+    res.render("account/accountManagement", {
         title: "Account Management",
         nav,
         errors: null,
@@ -54,20 +55,21 @@ async function accountManagement(req, res) {
     if (regResult) {
         req.flash(
             "notice",
-            `Congratulations, you\'re registered ${account_firstname}. Please log in.`
+            `Congratulations, you\'re logged in ${account_firstname}.`
         )
-        res.status(201).render("account/login", {
-            title: "Login",
+        res.status(201).render("account/accountManagement", {
+            title: "Account Management",
             nav,
         })
     } else {
-        req.flash("notice", "If you dont have any account, please register for an account.")
-        res.status(501).render("account/register", {
-            title: "Registration",
+        req.flash("notice", "Please login with the right credentials. If you dont have any account, please return to home page and register for an account.")
+        res.status(501).render("account/login", {
+            title: "login",
             nav,
         })
     }
 }
+
 
 
 

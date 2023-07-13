@@ -7,33 +7,37 @@
 
     <!-- Login View Error Display -->
     <%# if (errors) { %>
-        <!-- <ul class="notice">
-   <%# errors.array().forEach(error => { %>
-     <li><%#= error.msg %></li>
-  <%#  }) %>
-   </ul>
-  <%# } %> -->
+        <!-- <ul class="notice"> -->
+            <%# errors.array().forEach(error=> { %>
+                <!-- <li> -->
+                    <%#= error.msg %>
+                <!-- </li> -->
+                <%# }) %>
+        <!-- </ul> -->
+        <%# } %>
 
 
-        <!-- Login View Display -->
-        <div class="loginContainer">
-            <form id="loginForm" action="/account/login" method="post">
-                <fieldset  class="loginBox">
-                    <label for="email">Email:</label><br>
-                    <input type="email" id="email" name="email" required
-                        pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" value="<%= locals.account_email %>"><br><br>
-                    <label for="password">Password:</label><br>
-                    <input type="password" id="pword" name="password" required
-                        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
-                        title="Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character"
-                        placeholder="Enter password"> <br><br><span id="showpswd">Show
-                        Password</span><br><br>
-                    <button type="submit" id="loginBtn">Login</button><br><br>
+            <!-- Login View Display -->
+            <div class="loginContainer">
+                <form id="loginForm" action="/account/login" method="post">
+                    <fieldset class="loginBox">
+                        <label for="email">Email:</label><br>
+                        <input type="email" id="email" name="email" required
+                            pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                            value="<%= locals.account_email %>"><br><br>
+                        <label for="password">Password:</label><br>
+                        <input type="password" id="pword" name="password" required
+                            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+                            title="Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character"
+                            placeholder="Enter password"> <br><br><span id="showpswd">Show
+                            Password</span><br><br>
+                        <button type="submit" id="loginBtn">Login</button><br><br>
+                        <!-- <button type="submit" id="loginBtn"><a href="/account/accountManagement">Login</a></button><br><br> -->
+                    </fieldset>
+                    <p id="registerPage">Don't have an account? <a href="/account/register"
+                            id="registrationLink">Sign-up</a></p>
 
-                </fieldset>
-                <p id="registerPage">Don't have an account? <a href="/account/register" id="registrationLink">Sign-up</a></p>
+                </form>
 
-            </form>
-
-        </div>
-        <script src="/js/script.js"></script>
+            </div>
+            <script src="/js/script.js"></script>

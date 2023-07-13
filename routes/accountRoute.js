@@ -27,11 +27,14 @@ router.get("/register", utilities.handleErrors(accountController.buildRegister))
 router.post('/register', regValidate.registationRules(), regValidate.checkRegData, utilities.handleErrors(accountController.registerAccount))
 
 
+// // for test
+// router.get("/accountManagement", utilities.handleErrors(accountController.accountManagement));
+
 
 
 
 // Route to build account by Management view
-router.get("/management", utilities.handleErrors(accountController.buildManagement));
+router.get("/accountManagement", utilities.handleErrors(accountController.buildManagement));
 
 router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildManagement))
 

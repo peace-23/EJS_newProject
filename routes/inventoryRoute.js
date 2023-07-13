@@ -9,12 +9,28 @@ const regValidate = require("../utilities/management-validation")
 router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
 router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildByinventoryId));
 
+// Route to work with the inventory.js file
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
+
+
+
+
+// Route to edit an inventory
+router.get("/edit/#", utilities.handleErrors(invController.buildEditView));
+
+// Route to handle the incoming request
+router.post("/update/", utilities.handleErrors(invController.updateInventory));
+
+
+
 
 // Process the new classification data
 router.post('/add-Classification', regValidate.newClassificationRules(), regValidate.checkClassificationData, utilities.handleErrors(invController.registerClassification))
 
 // Process the new classification attempt
 router.get( "/add-Classification", utilities.handleErrors(invController.buildAddClassification))
+
+
 
 
 // Process the new vehicle data
