@@ -20,10 +20,10 @@
             <!-- Add New Classification View Display -->
             <div class="addClassContainer">
                 <form action="/inv/add-Classification" method="post">
-                    <fieldset class="registerBox">
+                    <fieldset class="addClassBox">
                         <p id="addClassWarning">ALL FIELDS ARE REQUIRED.<br> NAME MUST BE ALPHABETIC CHARACTERS ONLY.
                         </p>
-                        <hr />
+                        <hr /><br>
                         <label for="classification_name">Classification Name:</label><br>
                         <input type="text" id="classification_name" name="classification_name" required
                             value="<%= locals.classification_name %>" placeholder="Enter firstname"><br><br>

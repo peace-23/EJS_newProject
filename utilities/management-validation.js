@@ -96,9 +96,9 @@ validate.newVehicleRules = () => {
 }
 
 
-/* ******************************
+/* *******************************************************
 * Check data and return errors or continue to registration
-* ***************************** */
+* ******************************************************** */
 validate.checkvehicleData = async (req, res, next) => {
     const {
         inv_make,
