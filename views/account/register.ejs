@@ -15,6 +15,17 @@
    </ul>
   <% } %>
 
+  
+  <% if (flash) { %>
+    <% if (flash.notice) { %>
+      <ul class="notice">
+        <% flash.notice.forEach(msg => { %>
+          <li><%= msg %></li>
+        <%  }) %>
+      </ul>
+    <% } %>
+  <% } %>
+
 
   <!-- Registration View Display -->
     <div class="registerContainer">

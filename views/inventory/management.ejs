@@ -1,5 +1,3 @@
-<!-- This view will consist of three distinct sections: A content heading, a message, and the inventory items display. -->
-
 <!-- The Content Heading -->
 <% if (title) { %>
     <h1>
@@ -11,23 +9,58 @@
 
             <%#- grid %>
 
-                <!-- Vehicle Management View Display -->
-                <ul class="mgtContainer">
-                    <form action="/inventory/management" method="post">
-                    <li> <a href="/inv/add-Classification" id="addClassification">Add New
-                            Classification</a> </li>
-                    <li> <a href="/inv/add-Inventory" id="addVehicle">Add New Vehicle</a> </li>
-                    <!-- </form> -->
 
-                </ul>
+                <% if (errors) { %>
+                    <ul class="notice">
+                        <% errors.array().forEach(error=> { %>
+                            <li>
+                                <%= error.msg %>
+                            </li>
+                            <% }) %>
+                    </ul>
+                    <% } %>
 
-                <h2>Manage Inventory</h2>
-                <p>Select a classification from the list to see the inventory items.</p>
 
-                <%- ClassificationSelect %>
+                        <% if (flash) { %>
+                            <% if (flash.notice) { %>
+                                <ul class="notice">
+                                    <% flash.notice.forEach(msg=> { %>
+                                        <li>
+                                            <%= msg %>
+                                        </li>
+                                        <% }) %>
+                                </ul>
+                                <% } %>
+                                    <% } %>
 
-                    <table id="inventoryDisplay"></table>
 
-                    <noscript>JavaScript must be enabled to use this page.</noscript>
 
-                    <script src="/js/inventory.js"></script>
+                                        <!-- Vehicle Management View Display -->
+                                        <ul class="mgtContainer">
+                                            <form action="/inventory/management" method="post">
+                                                <li> <a href="/inv/add-Classification" id="addClassification">Add New
+                                                        Classification</a> </li>
+                                                <li> <a href="/inv/add-Inventory" id="addVehicle">Add New Vehicle</a>
+                                                </li>
+                                                <!-- </form> -->
+
+                                        </ul>
+
+                                        <h2>Manage Inventory</h2>
+                                        <p>Select a classification from the list to see the inventory items.</p>
+
+                                        <%#- classificationSelect %>
+                                            <label for="classification">Classification:</label>
+                                            <select id="classification">
+                                                <% for(var i=0; i<classification.rowCount; i++) {%>
+                                                    <option value="<%= classification.rows[i].classification_id %>">
+                                                        <%= classification.rows[i].classification_name %>
+                                                    </option>
+                                                    <% } %>
+                                            </select>
+
+                                            <table id="inventoryDisplay"></table>
+
+                                            <noscript>JavaScript must be enabled to use this page.</noscript>
+
+                                            <script src="../../js/inventory.js"></script>
