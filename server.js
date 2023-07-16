@@ -17,11 +17,13 @@ const session = require("express-session")
 const pool = require('./database/')
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const flash = require('connect-flash');
 
 
 /* ***********************
  * Middleware
  * ************************/
+
 app.use(session({
   store: new (require('connect-pg-simple')(session))({
     createTableIfMissing: true,
@@ -37,6 +39,7 @@ app.use(session({
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use(cookieParser())
+app.use(flash());
 
 
 // Express Messages Middleware
@@ -66,6 +69,7 @@ app.use(require("./routes/static"))
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
 app.get("/error", utilities.handleErrors(baseController.error));
+// app.use("/error", utilities.handleErrors(require("./routes/errorRoute")))
 
 
 // Inventory routes
