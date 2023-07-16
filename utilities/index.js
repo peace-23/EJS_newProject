@@ -27,6 +27,28 @@ Util.getNav = async function (req, res, next) {
 }
 
 
+Util.getInv = async function (req, res, next) {
+  let data = await invModel.getInventory();
+  let list = "<ul>"
+  list += '<li><a href="/" title="Home page">Home</a></li>'
+  data.rows.forEach((row) => {
+    list += "<li>"
+    list +=
+      '<a href="/inv/type/' +
+      row.classification_id +
+      '" title="See our inventory of ' +
+      row.classification_name +
+      ' vehicles">' +
+      row.classification_name +
+      "</a>"
+    list += "</li>"
+  })
+  list += "</ul>"
+  return list
+}
+
+
+
 /* **************************************
 * Build the classification view HTML
 * ************************************ */
@@ -60,6 +82,23 @@ Util.buildClassificationGrid = async function (data) {
   return grid
 }
 
+
+/* **************************************
+* Build the classification List HTML
+* ************************************ */
+Util.buildClassificationList = async function (data) {
+  let grid
+  if (data.length > 0) {
+    grid = '<select id="myDropdown" name="Classification">'
+    data.forEach((classification) => {
+      grid += `<option value="${classification.classification_id}">${classification.classification_name}</option>`
+    })
+    grid += '</select>'
+  } else {
+    grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
+  }
+  return grid
+}
 
 /* **************************************
 * Build the vehicle view HTML by id
@@ -107,35 +146,50 @@ Util.buildInventoryGrid = async function (data) {
 **************************************** */
 Util.checkJWTToken = (req, res, next) => {
   if (req.cookies.jwt) {
-   jwt.verify(
-    req.cookies.jwt,
-    process.env.ACCESS_TOKEN_SECRET,
-    function (err, accountData) {
-     if (err) {
-      req.flash("Please log in")
-      res.clearCookie("jwt")
-      return res.redirect("/account/login")
-     }
-     res.locals.accountData = accountData
-     res.locals.loggedin = 1
-     next()
-    })
+    jwt.verify(
+      req.cookies.jwt,
+      process.env.ACCESS_TOKEN_SECRET,
+      function (err, accountData) {
+        if (err) {
+          req.flash("Please log in")
+          res.clearCookie("jwt")
+          return res.redirect("/account/login")
+        }
+        res.locals.accountData = accountData
+        res.locals.loggedin = 1
+        next()
+      })
   } else {
-   next()
+    next()
   }
- }
+}
 
- /* ****************************************
- *  Check Login
- * ************************************ */
- Util.checkLogin = (req, res, next) => {
+/* ****************************************
+*  Check Login
+* ************************************ */
+Util.checkLogin = (req, res, next) => {
   if (res.locals.loggedin) {
     next()
   } else {
     req.flash("notice", "Please log in.")
     return res.redirect("/account/login")
   }
+}
+
+
+/* ****************************************
+*  Check Login Clearance
+* ************************************ */
+Util.checkClearance = (req, res, next) => {
+  const accountType = res.locals.accountData.account_type
+  if(accountType !== "Admin" && accountType !== "Employee"){
+    req.flash("You do not have permission to access this page.")
+    return res.redirect("/account/login")
+  } else {
+    next()
+  }
  }
+
 
 /* ****************************************
  * Middleware For Handling Errors
