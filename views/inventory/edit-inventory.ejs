@@ -1,116 +1,91 @@
-<!-- Add Vehicle View Title -->
-<h1 class="editTitle">Add Vehicle</h1>
+<div> <!-- Add Vehicle View Title -->
+    <h1 class="editTitle"><%= title %></h1>
+
+    <!-- Add Vehicle  View Message -->
+    <%- messages() %>
 
 
-<!-- Add Vehicle  View Message -->
-<%- messages() %>
-
-
-    <!-- Add Vehicle  View Error Display -->
-    <% if (errors) { %>
-        <ul class="notice">
-            <% errors.array().forEach(error=> { %>
-                <li>
-                    <%= error.msg %>
-                </li>
-                <% }) %>
-        </ul>
-        <% } %>
-
-
-            <% if (flash) { %>
-                <% if (flash.notice) { %>
-                    <ul class="notice">
-                        <% flash.notice.forEach(msg=> { %>
-                            <li>
-                                <%= msg %>
-                            </li>
-                            <% }) %>
-                    </ul>
-                    <% } %>
-                        <% } %>
-
-
-                            <!-- Registration View Display -->
-                            <div class="editContainer">
-                                <form id="updateForm" action="/inv/edit-inventory" method="post">
-                                    <fieldset class="editBox">
-                                        <p id="editvWarning">ALL FIELDS ARE REQUIRED.</p>
-                                        <hr />
-
-
-                                        <label for="myDropdown">Select a Classification:</label>
-                                        <!-- <select id="myDropdown" name="Classification"> -->
-                                        <%#- ClassificationSelect %>
-
-                                            <label for="classification">Classification:</label>
-                                            <select id="classification" name="classification_id" required>
-                                                <% for(var i=0; i<classification.rowCount; i++) {%>
-                                                    <% var selected=(
-                                                        locals.classification_id==classification.rows[i].classification_id
-                                                        ) ? "selected" : "" ; %>
-
-                                                        <option value="<%= classification.rows[i].classification_id %>"
-                                                            <%=selected %> >
-                                                            <%= classification.rows[i].classification_name %>
-                                                        </option>
-                                                        <% } %>
-                                            </select>
+        <!-- Add Vehicle  View Error Display -->
+        <% if (errors) { %>
+            <ul class="notice">
+                <% errors.array().forEach(error=> { %>
+                    <li>
+                        <%= error.msg %>
+                    </li>
+                    <% }) %>
+            </ul>
+            <% } %>
 
 
 
-                                            <table id="inventoryDisplay"></table>
-                                            <br><br>
+                <!-- Registration View Display -->
+                <div class="editContainer">
+                    <form id="updateForm" action="/inv/update" method="post" onsubmit="return validateForm()">
+                        <fieldset class="editBox">
+                            <p id="editvWarning">ALL FIELDS ARE REQUIRED.</p>
+                            <hr />
 
-                                            <label for="invMake">Make:</label><br>
-                                            <input type="text" id="invMake" name="inv_make" required
-                                                value="<%= locals.inv_make %>"
-                                                placeholder="3 Character minimum"><br><br>
+                            <div>
+                                <label for="classification_id">Classification:</label>
+                                <select id="classification_id" name="classification_id" required>
+                                    <option value="" disabled>Select classification</option> <!-- Placeholder option -->
+                                    <% classifications.forEach(classification=> { %>
+                                        <option value="<%= classification.classification_id %>"
+                                            <%=classification.selected ? 'selected' : '' %>><%=
+                                                classification.classification_name %>
+                                        </option>
+                                        <% }) %>
+                                </select>
+                            </div><br><br>
+
+                            <label for="invMake">Make:</label><br>
+                            <input type="text" id="invMake" name="inv_make" required value="<%= locals.inv_make %>"
+                                placeholder="3 Character minimum"><br><br>
 
 
-                                            <label for="invModel">Model:</label><br>
-                                            <input type="text" id="invModel" name="inv_model" required
-                                                value="<%= locals.inv_model %>"
-                                                placeholder="3 Character minimum"><br><br>
+                            <label for="invModel">Model:</label><br>
+                            <input type="text" id="invModel" name="inv_model" required value="<%= locals.inv_model %>"
+                                placeholder="3 Character minimum"><br><br>
 
-                                            <label for="invDescription">Description:</label><br>
-                                            <textarea id="invDescription" rows="4" cols="50" name="inv_description"
-                                                required value="<%= locals.inv_description %>"></textarea><br><br>
+                            <label for="invDescription">Description:</label><br>
+                            <textarea id="invDescription" rows="4" cols="50" name="inv_description" required
+                                value="<%= locals.inv_description %>"></textarea><br><br>
 
-                                            <label for="invImage">Image Path:</label><br>
-                                            <input type="text" id="invImage" name=inv_image required
-                                                value="<%= locals.inv_image %>"><br><br>
+                            <label for="invImage">Image Path:</label><br>
+                            <input type="text" id="invImage" name=inv_image required
+                                value="<%= locals.inv_image %>"><br><br>
 
-                                            <label for="invThumbnail">Thumbnail Path:</label><br>
-                                            <input type="text" id="invThumbnail" name="inv_thumbnail" required
-                                                value="<%= locals.inv_thumbnail %>" /><br><br>
+                            <label for="invThumbnail">Thumbnail Path:</label><br>
+                            <input type="text" id="invThumbnail" name="inv_thumbnail" required
+                                value="<%= locals.inv_thumbnail %>" /><br><br>
 
-                                            <label for="invPrice">Price:</label><br>
-                                            <input type="text" id="invPrice" name=inv_price required
-                                                value="<%= locals.inv_price%>" /><br><br>
+                            <label for="invPrice">Price:</label><br>
+                            <input type="text" id="invPrice" name=inv_price required
+                                value="<%= locals.inv_price%>" /><br><br>
 
-                                            <label for="invYear">Year:</label><br>
-                                            <input type="number" id="invYear" name=inv_year min="1900" max="2099"
-                                                required value="<%= locals.inv_year %>" /><br><br>
+                            <label for="invYear">Year:</label><br>
+                            <input type="number" id="invYear" name=inv_year min="1900" max="2099" required
+                                value="<%= locals.inv_year %>" /><br><br>
 
-                                            <label for="invMiles">Miles:</label><br>
-                                            <input type="number" id="invMiles" name=inv_miles min="0" required
-                                                value="<%= locals.inv_miles %>" /><br><br>
+                            <label for="invMiles">Miles:</label><br>
+                            <input type="number" id="invMiles" name=inv_miles min="0" required
+                                value="<%= locals.inv_miles %>" /><br><br>
 
-                                            <label for="invColor">Color:</label><br>
-                                            <input type="text" id="invColor" name=inv_color required
-                                                value="<%= locals.inv_color%>" /><br><br>
+                            <label for="invColor">Color:</label><br>
+                            <input type="text" id="invColor" name=inv_color required
+                                value="<%= locals.inv_color%>" /><br><br>
 
-                                            <button type="submit" id="editBtn" disabled>Update Vehicle</button><br><br>
-                                            <input type="hidden" name="inv_id" <% if(locals.inv_id)
-                                                { %> value="<%= locals.inv_id %>"
-                                                <% } %>>
+                            <button type="submit" id="editBtn" disabled>Update Vehicle</button><br><br>
+                            <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%= locals.inv_id %>
+                                "
+                                <% } %>>
 
-                                    </fieldset>
+                        </fieldset>
 
-                                </form>
+                    </form>
 
-                            </div>
-                            <script src="/js/script.js"></script>
-                            <script src="../../js/inv-update.js"></script>
-                            <script src="/js/inventory.js"></script>
+                </div>
+</div>
+<script src="/js/script.js"></script>
+<script src="../../js/inv-update.js"></script>
+<script src="/js/inventory.js"></script>

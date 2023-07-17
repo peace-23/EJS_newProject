@@ -1,73 +1,66 @@
-<!-- Add Vehicle View Title -->
-<h1 class="deleteTitle">Add Vehicle</h1>
+<div>
+
+    <!-- Add Vehicle View Title -->
+    <h1 class="deleteTitle"><%= title %></h1>
 
 
-<!-- Add Vehicle  View Message -->
-<%- messages() %>
+    <!-- Add Vehicle  View Message -->
+    <%- messages() %>
 
 
-    <!-- Add Vehicle  View Error Display -->
-    <% if (errors) { %>
-        <ul class="notice">
-            <% errors.array().forEach(error=> { %>
-                <li>
-                    <%= error.msg %>
-                </li>
-                <% }) %>
-        </ul>
-        <% } %>
-
-
-        <% if (flash) { %>
-            <% if (flash.notice) { %>
-              <ul class="notice">
-                <% flash.notice.forEach(msg => { %>
-                  <li><%= msg %></li>
-                <%  }) %>
-              </ul>
+        <!-- Add Vehicle  View Error Display -->
+        <% if (errors) { %>
+            <ul class="notice">
+                <% errors.array().forEach(error=> { %>
+                    <li>
+                        <%= error.msg %>
+                    </li>
+                    <% }) %>
+            </ul>
             <% } %>
-          <% } %>
-        
 
 
-            <!-- Registration View Display -->
-            <div class="deleteContainer">
-                <form id="deleteForm" action="/inv/delete-confirm" method="post">
-                    <fieldset class="deleteBox">
-                        <p id="deleteWarning">Confirm Deletion - The delete is permanent.</p>
-                        <hr />
-                        
-                        <label for="invMake">Make:</label><br>
-                        <input type="text" id="invMake" name="inv_make" readonly <% if(locals.inv_make) { %> value="<%=
-                            locals.inv_make %>"<%} %>><br><br>
+                <!-- Registration View Display -->
+                <div class="deleteContainer">
+                    <form id="deleteForm" action="/inv/delete" method="post">
+                        <fieldset class="deleteBox"><hr/>
 
-                                <label for="invModel">Model:</label><br>
-                                <input type="text" id="invModel" name="inv_model" readonly <% if(locals.inv_model) { %>
-                                value="<%= locals.inv_model %>"<%} %>><br><br>
+                            <label for="invMake">Make:</label><br>
+                            <input type="text" id="invMake" name="inv_make" readonly <% if(locals.inv_make) { %> value="
+                            <%= locals.inv_make %>"<%} %>><br><br>
 
-                                        <label for="invPrice">Price:</label><br>
-                                        <input type="text" id="invPrice" name=inv_price readonly <% if(locals.inv_price)
-                                            { %> value="<%= locals.inv_price %>"<%} %>> /><br><br>
+                                    <label for="invModel">Model:</label><br>
+                                    <input type="text" id="invModel" name="inv_model" readonly <% if(locals.inv_model) {
+                                        %>
+                                    value="<%= locals.inv_model %>"<%} %>><br><br>
 
-                                                <label for="invYear">Year:</label><br>
-                                                <input type="number" id="invYear" name=inv_year min="1900" max="2099"
-                                                    readonly <% if(locals.inv_year) { %> value="<%= locals.inv_year %>"
-                                                    <%} %>> /><br><br>
+                                            <label for="invPrice">Price:</label><br>
+                                            <input type="text" id="invPrice" name=inv_price readonly <%
+                                                if(locals.inv_price) { %> value="<%= locals.inv_price %>"<%} %>>
+                                                    /><br><br>
 
+                                                    <label for="invYear">Year:</label><br>
+                                                    <input type="number" id="invYear" name=inv_year min="1900"
+                                                        max="2099" readonly <% if(locals.inv_year) { %> value="<%=
+                                                        locals.inv_year %>"
+                                                        <%} %>> /><br><br>
 
+                                                            <p id="deleteWarning">Confirm Deletion - The delete is
+                                                                permanent.</p>
 
-                                                        <button type="submit" id="deleteBtn">delete
-                                                            Vehicle</button><br><br>
-                                                        <input type="hidden" name="inv_id" <% if(locals.inv_id) { %>
-                                                        value="<%= locals.inv_id %>
-                                                            "
-                                                            <% } %>>
+                                                            <button type="submit" id="deleteBtn">delete
+                                                                Vehicle</button><br><br>
+                                                            <input type="hidden" name="inv_id" <% if(locals.inv_id) { %>
+                                                            value="<%= locals.inv_id %>
+                                                                "
+                                                                <% } %>>
 
-                    </fieldset>
+                        </fieldset>
 
-                </form>
+                    </form>
 
-            </div>
-            <script src="/js/script.js"></script>
-            <script src="/js/inv-update.js"></script>
-            <script src="/js/inventory.js"></script>
+                </div>
+</div>
+<script src="/js/script.js"></script>
+<script src="/js/inv-update.js"></script>
+<script src="/js/inventory.js"></script>

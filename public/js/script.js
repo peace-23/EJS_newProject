@@ -17,28 +17,28 @@ showpswd.addEventListener("click", function () {
 
 
 
+// ************************
+// Form validation
+// ************************
+function validateForm() {
+  // Get the classification name input value
+  var classificationName = document.getElementById("classificationName").value;
 
-// // ******************************************************************
-// // This function is for the dropdown list of all the classifications
-// // ******************************************************************
-// // inv_make,  var dropdown = document.getElementById("myDropdown");
+  // Regular expression pattern to match against
+  var pattern = /^[a-zA-Z0-9]+$/;
 
-// // Fetch options from the server and populate the dropdown
-// fetch('../navigation')
-//   .then(response => response.json())
-//   .then(data => {
-//     data.forEach(option => {
-//       var optionElement = document.createElement('option');
-//       optionElement.value = option.id;
-//       optionElement.textContent = option.name;
-//       dropdown.appendChild(optionElement);
-//     });
-//   })
-//   .catch(error => {
-//     console.error('Error fetching options: ' + error);
-//   });
+  // Check if the classification name contains any spaces or special characters
+  if (!pattern.test(classificationName)) {
+    // Display an error message
+    document.getElementById("classificationNameError").textContent = "Invalid classification name. Only alphanumeric characters are allowed.";
+    
+    // Prevent form submission
+    return false;
+  }
 
-// dropdown.addEventListener("change", function () {
-//   var selectedOption = dropdown.value;
-//   console.log("Selected option: " + selectedOption);
-// });
+  // Clear any existing error messages
+  document.getElementById("classificationNameError").textContent = "";
+
+  // Allow form submission
+  return true;
+}

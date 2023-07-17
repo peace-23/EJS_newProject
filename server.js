@@ -9,6 +9,7 @@ const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config()
 const app = express()
+const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const accountRoute = require("./routes/accountRoute")
@@ -36,12 +37,6 @@ app.use(session({
 }))
 
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-app.use(cookieParser())
-app.use(flash());
-
-
 // Express Messages Middleware
 app.use(require('connect-flash')())
 app.use(function(req, res, next){
@@ -50,12 +45,34 @@ app.use(function(req, res, next){
 })
 
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+app.use(cookieParser());
+
 app.use(utilities.checkJWTToken)
+
+
+app.use(async (req, res, next) => {
+  try {
+    const token = req.cookies.jwt;
+    if (token) {
+      const accountData = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+      res.locals.isLoggedIn = true;
+      res.locals.username = accountData.account_firstname; // assuming accountData has a 'account_firstname' field
+    } else {
+      res.locals.isLoggedIn = false;
+    }
+  } catch (error) {
+    res.locals.isLoggedIn = false;
+  }
+  next();
+});
 
 
 /* ***********************
  * View Engine and Templates
  *************************/
+app.use(express.static('public'))
 app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout") // not at views root

@@ -12,7 +12,7 @@ const regValidate = require("../utilities/management-validation")
 router.get("/",
     utilities.checkLogin,
     utilities.checkClearance,
-    utilities.handleErrors(invController.viewInv)
+    utilities.handleErrors(invController.buildVehicleManagement)
 );
 
 

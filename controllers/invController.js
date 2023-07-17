@@ -44,15 +44,14 @@ invCont.buildByinventoryId = async function (req, res, next) {
 invCont.buildVehicleManagement = async function (req, res, next) {
   let nav = await utilities.getNav()
   // req.flash("notice", "This is a flash message.")
-  const classificationSelect = await utilities.buildClassificationList(invModel.getClassifications())
-  let classification = await invModel.getClassifications();
+  let classifications = await invModel.getClassifications();
+  const classificationSelect = await utilities.buildClassificationList(classifications.rows)
   res.render("inventory/management", {
     title: "Vehicle Management",
     nav,
     flash: req.flash(),
     errors: null,
-    classificationSelect,
-    classification,
+    classificationSelect
   })
 }
 

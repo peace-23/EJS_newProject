@@ -1,66 +1,36 @@
-<!-- The Content Heading -->
-<% if (title) { %>
-    <h1>
-        <%= title %>
-    </h1>
-    <% } else { res.redirect('/') } %>
-
+<div><!-- The Content Heading -->
+    <% if (title) { %>
+        <h1>
+            <%= title %>
+        </h1>
+        <% } %>
         <%- messages() %>
 
-            <%#- grid %>
+            <% if (errors) { %>
+                <ul class="notice">
+                    <% errors.array().forEach(error=> { %>
+                        <li>
+                            <%= error.msg %>
+                        </li>
+                        <% }) %>
+                </ul>
+                <% } %>
+
+                    <!-- Vehicle Management View Display -->
+                    <!-- <ul class="mgtContainer"> -->
+                    <!-- <form action="/inventory/management" method="post"> -->
+                    <li> <a href="/inv/add-Classification" id="addClassification">Add New Classification</a> </li>
+                    <li> <a href="/inv/add-Inventory" id="addVehicle">Add New Vehicle</a>
+                    </li>
+                    <!-- </form> -->
 
 
-                <% if (errors) { %>
-                    <ul class="notice">
-                        <% errors.array().forEach(error=> { %>
-                            <li>
-                                <%= error.msg %>
-                            </li>
-                            <% }) %>
-                    </ul>
-                    <% } %>
+                    <h2>Manage Inventory</h2>
+                    <p>Select a classification from the list to see the inventory items.</p>
+                    <%- classificationSelect %>
 
+                            <table id="inventoryDisplay"></table>
 
-                        <% if (flash) { %>
-                            <% if (flash.notice) { %>
-                                <ul class="notice">
-                                    <% flash.notice.forEach(msg=> { %>
-                                        <li>
-                                            <%= msg %>
-                                        </li>
-                                        <% }) %>
-                                </ul>
-                                <% } %>
-                                    <% } %>
-
-
-
-                                        <!-- Vehicle Management View Display -->
-                                        <ul class="mgtContainer">
-                                            <form action="/inventory/management" method="post">
-                                                <li> <a href="/inv/add-Classification" id="addClassification">Add New
-                                                        Classification</a> </li>
-                                                <li> <a href="/inv/add-Inventory" id="addVehicle">Add New Vehicle</a>
-                                                </li>
-                                                <!-- </form> -->
-
-                                        </ul>
-
-                                        <h2>Manage Inventory</h2>
-                                        <p>Select a classification from the list to see the inventory items.</p>
-
-                                        <%#- classificationSelect %>
-                                            <label for="classification">Classification:</label>
-                                            <select id="classification">
-                                                <% for(var i=0; i<classification.rowCount; i++) {%>
-                                                    <option value="<%= classification.rows[i].classification_id %>">
-                                                        <%= classification.rows[i].classification_name %>
-                                                    </option>
-                                                    <% } %>
-                                            </select>
-
-                                            <table id="inventoryDisplay"></table>
-
-                                            <noscript>JavaScript must be enabled to use this page.</noscript>
-
-                                            <script src="../../js/inventory.js"></script>
+                            <noscript>JavaScript must be enabled to use this page.</noscript>
+</div>
+<script src="../../js/inventory.js"></script>

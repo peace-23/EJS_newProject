@@ -1,65 +1,57 @@
-<!-- Registration View Title -->
-<h1 class="registrationTitle">Register</h1>
+<div>
+    <!-- Registration View Title -->
+    <h1 class="registrationTitle"><%= title %></h1>
 
+    <!-- Registration View Message -->
+    <%- messages() %>
 
-<!-- Registration View Message -->
-<%- messages() %>
+        <!-- Registration View Error Display -->
+        <% if (errors) { %>
+            <ul class="notice">
+                <% errors.array().forEach(error=> { %>
+                    <li>
+                        <%= error.msg %>
+                    </li>
+                    <% }) %>
+            </ul>
+            <% } %>
 
+                <!-- Registration View Display -->
+                <div class="registerContainer">
+                    <form action="/account/register" method="post">
+                        <fieldset class="registerBox">
+                            <p id="requireWarning">ALL FIELDS ARE REQUIRED.</p>
+                            <hr />
+                            <label for="fname">First name:</label><br>
+                            <input type="text" id="fname" name="account_firstname" required
+                                value="<%= locals.account_firstname %>" placeholder="Enter firstname"><br><br>
+                            <label for="lname">Last name:</label><br>
+                            <input type="text" id="lname" name="account_lastname" required
+                                value="<%= locals.account_lastname %>" placeholder="Enter lastname"><br><br>
+                            <label for="email">Email:</label><br>
+                            <input type="email" id="email" name="account_email" required
+                                pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" value="<%= locals.account_email %>"
+                                placeholder="Enter a valid email address"><br><br>
+                            <label for="accountPassword">Password:</label><br>
+                            <input type="password" id="pword" name="account_password" required
+                                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+                                title="Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character"
+                                placeholder="Enter password"> <br><br><span id="showpswd">Show
+                                Password</span><br><br>
 
-<!-- Registration View Error Display -->
-<% if (errors) { %>
-    <ul class="notice">
-   <% errors.array().forEach(error => { %>
-     <li><%= error.msg %></li>
-  <%  }) %>
-   </ul>
-  <% } %>
+                            <p id="pwdRequirement">Password must be:<br>
+                                * 12 characters in length, minimum<br>
+                                * contain at least 1 capital letter<br>
+                                * contain at least 1 number<br>
+                                * contain at least 1 special character
+                            </p>
+                            <button type="submit" id="regBtn">Register</button><br><br>
+                            <hr />
+                            <p id="loginPage">Have an account? <a href="/account/login" id="loginLink">Login</a></p>
+                        </fieldset>
 
-  
-  <% if (flash) { %>
-    <% if (flash.notice) { %>
-      <ul class="notice">
-        <% flash.notice.forEach(msg => { %>
-          <li><%= msg %></li>
-        <%  }) %>
-      </ul>
-    <% } %>
-  <% } %>
+                    </form>
 
-
-  <!-- Registration View Display -->
-    <div class="registerContainer">
-        <form action="/account/register" method="post">
-            <fieldset class="registerBox">
-                <p id="requireWarning">ALL FIELDS ARE REQUIRED.</p>
-                <hr />
-                <label for="fname">First name:</label><br>
-                <input type="text" id="fname" name="account_firstname" required value="<%= locals.account_firstname %>" placeholder="Enter firstname"><br><br>
-                <label for="lname">Last name:</label><br>
-                <input type="text" id="lname" name="account_lastname" required value="<%= locals.account_lastname %>" placeholder="Enter lastname"><br><br>
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="account_email" required
-                    pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
-                    value="<%= locals.account_email %>" placeholder="Enter a valid email address"><br><br>
-                <label for="accountPassword">Password:</label><br>
-                <input type="password" id="pword" name="account_password" required
-                    pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
-                    title="Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter and 1 special character"
-                    placeholder="Enter password"> <br><br><span id="showpswd">Show
-                    Password</span><br><br>
-
-                <p id="pwdRequirement">Password must be:<br>
-                    * 12 characters in length, minimum<br>
-                    * contain at least 1 capital letter<br>
-                    * contain at least 1 number<br>
-                    * contain at least 1 special character
-                </p>
-                <button type="submit" id="regBtn">Register</button><br><br>
-                <hr />
-                <p id="loginPage">Have an account? <a href="/account/login" id="loginLink">Login</a></p>
-            </fieldset>
-
-        </form>
-
-    </div>
-    <script src="/js/script.js"></script>
+                </div>
+</div>
+<script src="/js/script.js"></script>

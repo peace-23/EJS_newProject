@@ -176,7 +176,7 @@ async function accountManagement(req, res) {
 async function buildAccountUpdate(req, res, next) {
     let nav = await utilities.getNav()
     const { account_id } = req.params;
-    const data = await Account.getAccountById(account_id);
+    const data = await accountModel.getAccountById(account_id);
     res.render("account/update", {
         title: "Edit Account",
         nav,
@@ -199,7 +199,7 @@ async function accountUpdate(req, res, next) {
         account_email,
         account_id, } = req.body
     let nav = await utilities.getNav()
-    const updateResult = await Account.updateAccount(
+    const updateResult = await accountModel.updateAccount(
         account_firstname,
         account_lastname,
         account_email,
@@ -208,7 +208,7 @@ async function accountUpdate(req, res, next) {
     if (updateResult) {
         const updatedName = updateResult.account_firstname + " " + updateResult.account_lastname
 
-        const accountData = await Account.getAccountById(account_id)
+        const accountData = await accountModel.getAccountById(account_id)
         const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
         res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
 
@@ -219,7 +219,7 @@ async function accountUpdate(req, res, next) {
     }
     else {
         req.flash("notice", "Sorry, the update failed.");
-        res.status(501).render("account/update/", {
+        res.status(501).render("account/update", {
             title: "Edit Account",
             nav,
             errors: null,
@@ -247,7 +247,7 @@ async function changePassword(req, res) {
             account_id,
         });
     }
-    const updateResult = await Account.changePassword(hashedPassword, account_id)
+    const updateResult = await accountModel.changePassword(hashedPassword, account_id)
     if (updateResult) {
         const updatedName = updateResult.account_firstname + " " + updateResult.account_lastname
         req.flash("notice", `${updatedName}'s password was successfully updated.`)
@@ -295,7 +295,7 @@ async function deleteAccount(req, res, next) {
     const account_id = parseInt(req.params.account_id);
     console.log(account_id)
     let nav = await utilities.getNav();
-    const accountData = await Account.getAccountById(account_id)
+    const accountData = await accountModel.getAccountById(account_id)
     const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
     res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
     const itemName = `${accountData.account_firstname} ${accountData.account_lastname}`;
@@ -318,7 +318,7 @@ async function removeAccount(req, res, next) {
     const account_id = parseInt(req.body.account_id);
 
     let nav = await utilities.getNav()
-    const removeResult = await Account.removeAccount(account_id)
+    const removeResult = await accountModel.removeAccount(account_id)
     if (removeResult) {
         req.flash("notice", `The account was successfully Deleted.`)
         res.redirect("/")
