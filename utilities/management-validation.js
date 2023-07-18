@@ -56,17 +56,17 @@ validate.checkClassificationData = async (req, res, next) => {
  * ********************************* */
 validate.newVehicleRules = () => {
     return [
-        body("classification_id")
+        body("inv_classification")
             .trim()
             .isNumeric()
             .withMessage("Please provide a valid classification ID."),
         body("inv_make")
             .trim()
-            .isLength({ min: 1 })
+            .isLength({ min: 3 })
             .withMessage("Please provide a make."),
         body("inv_model")
             .trim()
-            .isLength({ min: 1 })
+            .isLength({ min: 3 })
             .withMessage("Please provide a model."),
         body("inv_year")
             .trim()
@@ -74,7 +74,7 @@ validate.newVehicleRules = () => {
             .withMessage("Please provide a valid year."),
         body("inv_description")
             .trim()
-            .isLength({ min: 1 })
+            .isLength({ min: 3 })
             .withMessage("Please provide a description."),
         body("inv_image")
             .trim()
@@ -114,9 +114,9 @@ validate.checkvehicleData = async (req, res, next) => {
         inv_price,
         inv_miles,
         inv_color,
-        classification_id,
+        inv_classification,
     } = req.body;
-    let classification = await invModel.getClassifications();//new
+    let classifications = await invModel.getClassifications();//new
     let inventoryList = await utilities.getInv();//new
     let errors = []
     errors = validationResult(req)
@@ -127,7 +127,7 @@ validate.checkvehicleData = async (req, res, next) => {
             errors,
             title: "Add Vehicles",
             nav,
-            classification,
+            classifications,
             inventoryList,
             flash: req.flash(),
             inv_make,
@@ -139,7 +139,7 @@ validate.checkvehicleData = async (req, res, next) => {
             inv_price,
             inv_miles,
             inv_color,
-            classification_id,
+            inv_classification,
         })
         return
     }

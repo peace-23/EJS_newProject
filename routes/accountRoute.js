@@ -49,7 +49,7 @@ router.post(
 router.post(
   "/change-password",
   utilities.checkLogin,
-    regValidate.changePasswordRules,
+  regValidate.changePasswordRules,
   utilities.handleErrors(accountController.changePassword)
 );
 

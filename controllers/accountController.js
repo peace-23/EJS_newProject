@@ -158,12 +158,16 @@ async function accountManagement(req, res) {
         res.status(201).render("account/accountManagement", {
             title: "Account Management",
             nav,
+            flash: req.flash(),
+            errors: null,
         })
     } else {
         req.flash("notice", "Please login with the right credentials. If you dont have any account, please return to home page and register for an account.")
         res.status(501).render("account/login", {
             title: "login",
             nav,
+            flash: req.flash(),
+            errors: null,
         })
     }
 }
@@ -222,6 +226,7 @@ async function accountUpdate(req, res, next) {
         res.status(501).render("account/update", {
             title: "Edit Account",
             nav,
+            flash: req.flash(),
             errors: null,
             account_firstname,
             account_lastname,
@@ -232,6 +237,7 @@ async function accountUpdate(req, res, next) {
 };
 
 async function changePassword(req, res) {
+    console.log("test")
     let nav = await utilities.getNav();
     const { account_password, account_id } = req.body;
 
@@ -243,6 +249,7 @@ async function changePassword(req, res) {
         res.status(500).render("account/update", {
             title: "Edit Account",
             nav,
+            flash: req.flash(),
             errors: null,
             account_id,
         });
@@ -259,9 +266,7 @@ async function changePassword(req, res) {
         res.status(501).render("account/update", {
             title: "Edit Account",
             nav,
-
             flash: req.flash(),
-
             errors: null,
             account_id,
         });
@@ -278,7 +283,7 @@ async function register(req, res, next) {
  * ************************************ */
 async function accountLogout(req, res) {
     let nav = await utilities.getNav()
-    req.flash("notice", "you're logged out.")
+    req.flash("notice", "You're logged out, hoping to see you soon!")
     res.clearCookie("jwt");
     return res.redirect("/")
 }

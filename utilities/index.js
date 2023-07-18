@@ -89,7 +89,7 @@ Util.buildClassificationGrid = async function (data) {
 Util.buildClassificationList = async function (data) {
   let grid
   if (data.length > 0) {
-    grid = '<select id="myDropdown" name="Classification">'
+    grid = '<select id="classificationList" name="Classification">'
     data.forEach((classification) => {
       grid += `<option value="${classification.classification_id}">${classification.classification_name}</option>`
     })

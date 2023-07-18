@@ -11,6 +11,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
   const data = await invModel.getInventoryByClassificationId(classification_id)
   const grid = await utilities.buildClassificationGrid(data)
   let nav = await utilities.getNav()
+  console.log(classification_id, data)
   const className = data[0].classification_name
   res.render("./inventory/classification", {
     title: className + " vehicles",
@@ -128,13 +129,14 @@ invCont.registerClassification = async function (req, res, next) {
 * *************************************** */
 invCont.buildAddVehicle = async function (req, res, next) {
   let nav = await utilities.getNav()
-  let classification = await invModel.getClassifications();
+  let classifications = await invModel.getClassifications();
+  // console.log(classifications);
   let inventoryList = await utilities.getInv();
   // req.flash("notice", "This is a flash message.")
   res.render("inventory/add-Inventory", {
     title: "Add Vehicle",
     nav,
-    classification,
+    classifications,
     inventoryList,
     flash: req.flash(),
     errors: null,
@@ -148,6 +150,7 @@ invCont.buildAddVehicle = async function (req, res, next) {
 
 invCont.registerNewVehicle = async function (req, res, next) {
   let nav = await utilities.getNav()
+  let classifications = await invModel.getClassifications();
   const {
     inv_make,
     inv_model,
@@ -157,9 +160,11 @@ invCont.registerNewVehicle = async function (req, res, next) {
     inv_thumbnail,
     inv_price,
     inv_miles,
-    inv_color } = req.body
+    inv_color,
+    inv_classification } = req.body
 
   const regResult = await invModel.registerNewVehicle(
+    inv_classification,
     inv_make,
     inv_model,
     inv_year,
@@ -179,7 +184,6 @@ invCont.registerNewVehicle = async function (req, res, next) {
       res.status(201).render("inventory/management", {
         title: "Vehicle Management",
         nav,
-        classification,
         flash: req.flash(),
         errors: null,
       })
@@ -188,7 +192,8 @@ invCont.registerNewVehicle = async function (req, res, next) {
       res.status(501).render("inventory/add-Inventory", {
         title: "Add Vehicle",
         nav,
-        classification,
+        
+        classifications,
         inventoryList,
         inv_make,
         inv_model,
@@ -199,13 +204,13 @@ invCont.registerNewVehicle = async function (req, res, next) {
         inv_price,
         inv_miles,
         inv_color,
-        classification_id,
+        inv_classification,
         flash: req.flash(),
         errors: null,
       })
     }
   } catch (error) {
-    console.error("addInventory error: ", error);
+    // console.error("addInventory error: ", error);
     req.flash("notice", 'Sorry, there was an error processing the inventory.')
     res.status(500).render("inventory/add-inventory", {
       title: "Add Inventory - Error",
@@ -390,20 +395,7 @@ invCont.deleteInventory = async function (req, res, next) {
           res.status(501).render("/inv/")
   }
 
-  // if (deleteResult) {
-  //   const itemName = deleteResult.inv_make + " " + deleteResult.inv_model
-  //   req.flash("notice", `The ${itemName} was successfully deleted.`)
-  //   res.redirect("/inv/")
-  // } else {
-  //   const classificationSelect = await utilities.buildClassificationList(classification_id)
-  //   const itemName = `${inv_make} ${inv_model}`
-  //   req.flash("notice", "Sorry, the insert failed.")
-  //   res.status(501).render("inventory/delete-confirm", {
-  //     title: "Delete " + itemName,
-  //     nav,
-  //     errors: null,
-  //     inv_id
-  //   })
+
 }
 
 
